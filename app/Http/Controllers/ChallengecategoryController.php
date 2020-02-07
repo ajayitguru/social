@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Challengecategory;
 use Illuminate\Http\Request;
+use Storage;
+use File;
+use Carbon\Carbon;
 
 class ChallengecategoryController extends Controller
 {
@@ -24,7 +27,7 @@ class ChallengecategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('challengecategory.create');
     }
 
     /**
@@ -35,7 +38,24 @@ class ChallengecategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //uploading file
+        $file=$request->file('image');
+        Storage::disk('public')->put($file->getClientOriginalName(),File::get($file));
+       // return "File Upladed ".$file->getClientoriginalName();
+       Challengecategory::insert([
+           'name'=>$request->name,
+           'description'=>$request->description,
+            'image'=>$file->getClientOriginalName(),
+            'status'=>$request->status,
+            'sortorder'=>$request->sortorder,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now()
+
+
+       ]);
+
+       return "saved";
+
     }
 
     /**

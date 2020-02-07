@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJoinedleaugesTable extends Migration
+class CreateBonusamountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateJoinedleaugesTable extends Migration
      */
     public function up()
     {
-        Schema::create('joinedleauges', function (Blueprint $table) {
+        Schema::create('bonusamounts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('type');
+            $table->integer('price');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateJoinedleaugesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('joinedleauges');
+        Schema::dropIfExists('bonusamounts');
     }
 }

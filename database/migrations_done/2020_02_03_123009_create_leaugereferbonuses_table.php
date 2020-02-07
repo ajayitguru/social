@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChalengesTable extends Migration
+class CreateLeaugereferbonusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateChalengesTable extends Migration
      */
     public function up()
     {
-        Schema::create('chalenges', function (Blueprint $table) {
+        Schema::create('leaugereferbonuses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('entryfee');
-            $table->integer('winammount');
-            $table->integer('maxuser');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('challenge_id');
+            $table->unsignedBigInteger('joinleauge_id');
+            $table->integer('amount');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateChalengesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chalenges');
+        Schema::dropIfExists('leaugereferbonuses');
     }
 }

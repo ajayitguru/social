@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChallengecategoriesTable extends Migration
+class CreateChalengesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,14 @@ class CreateChallengecategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('challengecategories', function (Blueprint $table) {
+        Schema::create('challenges', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('challengecategory_id');
+            $table->integer('entryfee');
+            $table->integer('winamount');
+            $table->integer('maxuser');
+            $table->integer('minuser');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateChallengecategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('challengecategories');
+        Schema::dropIfExists('challenges');
     }
 }

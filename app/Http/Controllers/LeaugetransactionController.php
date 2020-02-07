@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Challenge;
-use App\Challengecategory;
+use App\Leaugetransaction;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
-class ChalengeController extends Controller
+class LeaugetransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,8 +24,7 @@ class ChalengeController extends Controller
      */
     public function create()
     {
-        $challengecategories=Challengecategory::all();
-        return view('challenge.create',['challengecategories'=>$challengecategories]);
+        //
     }
 
     /**
@@ -37,28 +34,17 @@ class ChalengeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {//`challengecategory_id`, `entryfee`, `winamount`, `maxuser`, `minuser`, `type`, `created_at`, `updated_at` 
-     Challenge::insert([
-        'challengecategory_id'=>$request->challengecategory_id,
-        'entryfee'=>$request->entryfee,
-        'winamount'=>$request->winamount,
-        'maxuser'=>$request->maxuser,
-        'minuser'=>$request->minuser,
-        'type'=>$request->type,
-        'created_at'=>Carbon::now(),
-        'updated_at'=>Carbon::now()
-     ]);
-
-     return "Done";
+    {
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Chalenge  $chalenge
+     * @param  \App\Leaugetransaction  $leaugetransaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Chalenge $chalenge)
+    public function show(Leaugetransaction $leaugetransaction)
     {
         //
     }
@@ -66,10 +52,10 @@ class ChalengeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Chalenge  $chalenge
+     * @param  \App\Leaugetransaction  $leaugetransaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chalenge $chalenge)
+    public function edit(Leaugetransaction $leaugetransaction)
     {
         //
     }
@@ -78,10 +64,10 @@ class ChalengeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Chalenge  $chalenge
+     * @param  \App\Leaugetransaction  $leaugetransaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chalenge $chalenge)
+    public function update(Request $request, Leaugetransaction $leaugetransaction)
     {
         //
     }
@@ -89,10 +75,10 @@ class ChalengeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Chalenge  $chalenge
+     * @param  \App\Leaugetransaction  $leaugetransaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chalenge $chalenge)
+    public function destroy(Leaugetransaction $leaugetransaction)
     {
         //
     }

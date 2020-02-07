@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Userbalance;
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
 
 class UserbalanceController extends Controller
 {
@@ -14,7 +16,9 @@ class UserbalanceController extends Controller
      */
     public function index()
     {
-        //
+        $userbalances=Userbalance::all();
+
+        return view('userbalance.index',['userbalances'=>$userbalances]);
     }
 
     /**
@@ -24,7 +28,7 @@ class UserbalanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('userbalance.create');
     }
 
     /**
@@ -35,7 +39,26 @@ class UserbalanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $currentUser=Auth::id();
+        $msg="";
+    $user=Userbalance::where('user_id',$currentUser)->count();
+        if($user==0)
+        {
+            Userbalance::insert([
+                'winning'=>$request->winning,
+                'balance'=>$request->balance,
+                'bonus'=>$request->bonus,
+                'user_id'=> $currentUser
+                ]);
+                $msg="Inserted";
+
+        }else
+        {
+            $msg='user already exist';
+        }
+        
+
+        return $msg;
     }
 
     /**

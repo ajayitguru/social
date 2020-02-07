@@ -20,11 +20,19 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('refund','RefundController');
+Route::resource('userbalance','UserbalanceController');
+Route::resource('user','UserController');
+Route::resource('challengecategory','ChallengecategoryController');
+Route::resource('challenge','ChalengeController');
+
 Route::get('login/{provider}','Auth\SocialAccountController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\SocialAccountController@handleProviderCallback');
 
+
 //test route
 
+
 Route::get('/admin',function(){
-        return view('layouts.admin.admin');
+        return view('layouts.ajay');
 });

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRefundsTable extends Migration
+class FKChallengecategoryIdOnChallenge extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateRefundsTable extends Migration
      */
     public function up()
     {
-        Schema::create('refunds', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            
-            $table->timestamps();
+        Schema::table('challenges', function (Blueprint $table) {
+            $table->foreign('challengecategory_id')->references('id')->on('challengecategories');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateRefundsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('refunds');
+        Schema::table('challenges', function (Blueprint $table) {
+            //
+        });
     }
 }
